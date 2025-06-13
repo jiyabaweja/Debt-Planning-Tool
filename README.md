@@ -19,4 +19,4 @@ This Python notebook helps compare multiple debts by calculating EMI, interest b
 > 💡 Suitable for beginner-level finance/data analysis use cases.
 
 ## ▶️ Run the Tool Online
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jiyabaweja/Debt-Planning-Tool/blob/main/Data Planning Tool.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jiyabaweja/Debt-Planning-Tool/blob/main/DataPlanningTool.ipynb)
