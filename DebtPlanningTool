@@ -1,0 +1,41 @@
+def calculate_emi(P, R, T):
+    monthly_rate = R / (12 * 100)
+    n = T * 12
+    emi = (P * monthly_rate * (1 + monthly_rate)**n) / ((1 + monthly_rate)**n - 1)
+    total_payment = emi * n
+    total_interest = total_payment - P
+    return round(emi, 2), round(total_interest, 2), round(total_payment, 2)
+
+# Step 2–4 merged
+num_debts = int(input("Enter number of debts to analyze: "))
+debt_list = []
+
+for i in range(num_debts):
+    print(f"\nDebt {i+1}:")
+    name = input("Debt Name: ")
+    P = float(input("Loan Amount (₹): "))
+    R = float(input("Annual Interest Rate (%): "))
+    T = float(input("Tenure (years): "))
+
+    emi, interest, total = calculate_emi(P, R, T)
+    debt_list.append({
+        "Name": name,
+        "EMI (₹/month)": emi,
+        "Total Interest (₹)": interest,
+        "Total Payment (₹)": total
+    })
+
+# Summary & Insights
+print("\n📋 Debt Summary & Analysis:\n")
+total_emi = 0
+for debt in debt_list:
+    print(f"🟢 {debt['Name']}")
+    print(f"   EMI: ₹{debt['EMI (₹/month)']}")
+    print(f"   Total Interest: ₹{debt['Total Interest (₹)']}")
+    print(f"   Total Payment: ₹{debt['Total Payment (₹)']}")
+    print("-" * 30)
+    total_emi += debt["EMI (₹/month)"]
+
+most_expensive = max(debt_list, key=lambda x: x["Total Interest (₹)"])
+print(f"\n💰 Total Monthly EMI Outflow: ₹{round(total_emi, 2)}")
+print(f"⚠️ Costliest Debt by Interest: {most_expensive['Name']} (₹{most_expensive['Total Interest (₹)']})")
